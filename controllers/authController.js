@@ -25,6 +25,7 @@ const register = asyncHandler(async (req, res) => {
   if (user) {
     return res.status(400).json({ message: "this user already registered" });
   }
+  console.log(req.body);
   const salt = await bcrypt.genSalt(10);
   req.body.password = await bcrypt.hash(req.body.password, salt);
 
@@ -33,6 +34,7 @@ const register = asyncHandler(async (req, res) => {
     username: req.body.username,
     password: req.body.password,
   });
+
   const result = await user.save();
   const token = user.generateToken();
   const { password, ...other } = result._doc;

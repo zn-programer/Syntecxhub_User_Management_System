@@ -35,7 +35,7 @@ app.set("view engine", "ejs");
 app.use("/api/auth", require("./routes/auth"));
 app.use("/api/users", require("./routes/users"));
 app.use("/password", require("./routes/password"));
-
+app.use("/api/todos", require("./routes/todos"))
 // ERROR HANDLER MIDDLEWARES
 app.use(notFound);
 app.use(errorHandler);
